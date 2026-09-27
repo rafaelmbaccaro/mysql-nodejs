@@ -30,7 +30,7 @@ app.post('/cadastrar-usuario', (req, res) => {
 
     //previne o sql injection e facilita manipulação dos valores
     const sql = 'INSERT INTO usuario (nome_usuario, senha) VALUES (?, ?)';
-
+    
     db.query(sql, [nome, senha], (err, result) => {
         if (err) {
             console.error('Erro ao inserir no banco:', err);
