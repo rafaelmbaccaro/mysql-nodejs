@@ -42,5 +42,4 @@ app.post('/cadastrar-usuario', (req, res) => {
     });
 });
 
-
 app.listen(8080);
