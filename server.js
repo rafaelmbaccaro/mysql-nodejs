@@ -1,5 +1,5 @@
 const express = require('express');
-const mysql = require('mysql2'); // Importamos o MySQL
+const mysql = require('mysql2');
 const app = express();
 
 // Configuração da conexão com o banco de dados MySQL
