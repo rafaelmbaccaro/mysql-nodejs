@@ -3,7 +3,6 @@ const mysql = require('mysql2'); // Importamos o MySQL
 const app = express();
 
 // Configuração da conexão com o banco de dados MySQL
-//  AJUSTE o 'user' e 'password' de acordo com as credenciais do seu MySQL local!
 const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
