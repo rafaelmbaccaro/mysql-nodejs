@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Biblioteca</h1>
-    <form action="/cadastrar-usuario" method="post">
+    <form action="/acesso-usuario" method="post" id="cadastro_users">
         <fieldset><legend>Tela de Cadastro</legend>
             <label for="UsernameSubmit">Digite seu nome:</label>
             <input type="text" id="UsernameSubmit" name="username"><br>
@@ -16,6 +16,18 @@
             <input type="password" id="SenhaUserSubmit" name="password"><br>
 
             <button type="submit" id="submitRegister">Criar conta</button>
+        </fieldset>
+    </form>
+    <form action="/acesso-usuario" method="post">
+        <fieldset><legend>Tela de login</legend>
+
+        <label for="userNameLogin">Digite seu nome de usuário:</label>
+        <input type="text" id="userNameLogin" name="usernameLogin"><br>
+
+        <label for="senhaLogin">Digite sua senha:</label>
+        <input type="password" id="senhaLogin" name="passwordLogin"><br>
+
+        <button type="submit">Logar</button>
         </fieldset>
     </form>
 </body>
