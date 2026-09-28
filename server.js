@@ -58,7 +58,7 @@ app.post('/acesso-usuario', (req, res) => {
             console.log(`Usuário "${nome_login}" acessou com sucesso! ID: ${idEncontrado}`);
             res.send(`<h1>Bem-vindo, ${nome_login}! (ID: ${idEncontrado})</h1>`);
         } 
-        // 3. Se a lista veio vazia (usuário ou senha incorretos)
+
         else {
             console.log('Tentativa de login falhou: usuário ou senha incorretos.');
             res.send('<h1>Usuário ou senha incorretos!</h1><a href="/">Tentar novamente</a>');
