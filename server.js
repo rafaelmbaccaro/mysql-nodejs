@@ -2,6 +2,7 @@ const express = require('express');
 const mysql = require('mysql2');
 const app = express();
 
+
 // Configuração da conexão com o banco de dados MySQL
 const db = mysql.createConnection({
     host: 'localhost',
@@ -42,23 +43,25 @@ app.post('/acesso-usuario', (req, res) => {
         }
 
         console.log(`Usuário "${nome}" salvo com sucesso no banco de dados com ID: ${result.insertId}!`);
-        res.send(`<h1>Usuário "${nome}" cadastrado com sucesso no banco!</h1><a href="/">Voltar</a>`);
+        res.sendFile(__dirname + '/public/pagina-acesso.html');
     });
     
     }else {
     const sql = 'SELECT id FROM usuario WHERE nome_usuario = ? AND senha = ?';
     
     db.query(sql, [nome_login, senha_login], (err, result) => {
+        //Se o banco de dados apresentar algum erro
         if (err) {
             console.error('Erro ao consultar banco:', err);
             return res.status(500).send('Erro no servidor.');
-
-        }if (result.length > 0) { //se tiver encontrado um resultado
+        }
+        //Se o resultado retornado existir, testa o usuario com menor ID para acessar a conta
+        if (result.length > 0) {
             const idEncontrado = result[0].id;
             console.log(`Usuário "${nome_login}" acessou com sucesso! ID: ${idEncontrado}`);
-            res.send(`<h1>Bem-vindo, ${nome_login}! (ID: ${idEncontrado})</h1>`);
-        } 
-
+            res.sendFile(__dirname + '/public/pagina-acesso.html');
+        }
+        //Se result.length for 0, ou seja, não tiver um usuario com estes dados retorna mensagem de erro.
         else {
             console.log('Tentativa de login falhou: usuário ou senha incorretos.');
             res.send('<h1>Usuário ou senha incorretos!</h1><a href="/">Tentar novamente</a>');
